@@ -18,11 +18,7 @@ define topurg ranger
 
 define pr2 position
 (
-<<<<<<< HEAD
   size [0.650 0.650 0.250]
-=======
-  size [5.650 5.650 0.250]
->>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
   origin [-0.050 0 0 0]
   gui_nose 1
   drive "omni"
@@ -56,11 +52,7 @@ window
 ( 
   size [ 745.000 448.000 ] 
 
-<<<<<<< HEAD
   rotate [ 0 0 ]
-=======
-  rotate [ 0 -1.560 ]
->>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
   scale 30.287 
 )
 
@@ -68,7 +60,6 @@ window
 floorplan
 ( 
   name "willow"
-<<<<<<< HEAD
   bitmap "../maps/willow-full-0.025.pgm"
   size [58.300 45.625 1.000]
   pose [29.150 22.813 0 0] 
@@ -76,13 +67,4 @@ floorplan
 
 # throw in a robot
 pr2( pose [ 12.000 26.000 0 0 ] name "pr2" color "blue")
-=======
-  bitmap "../maps/mymap.pgm"
-  size [58.300 45.625 1.000]
-  pose [ -22.812 29.150 0 90.000 ] 
-)
-
-# throw in a robot
-pr2( pose [ 5 4 0 0 ] name "pr2" color "red")
->>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
 block( pose [ -25.251 10.586 0 180.000 ] color "red")

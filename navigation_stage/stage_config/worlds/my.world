@@ -52,11 +52,7 @@ window
 ( 
   size [ 745.000 448.000 ] 
 
-<<<<<<< HEAD
   rotate [ 0 0 ]
-=======
-  rotate [ 0 -1.560 ]
->>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
   scale 30.287 
 )
 
@@ -65,7 +61,6 @@ floorplan
 ( 
   name "willow"
   bitmap "../maps/mymap.pgm"
-<<<<<<< HEAD
   size [48.000 27.000 1.000]
   pose [24.000 13.500 0 0 ] 
 )
@@ -73,12 +68,3 @@ floorplan
 # throw in a robot
 pr2( pose [ 12.000 26.000 0 87.363 ] name "pr2" color "blue")
 block( pose [ -13.500 24.000 0 180.000 ] color "red")
-=======
-  size [58.300 45.625 1.000]
-  pose [ -22.812 29.150 0 90.000 ] 
-)
-
-# throw in a robot
-pr2( pose [ -26.068 22.140 0 87.363 ] name "pr2" color "blue")
-block( pose [ -25.251 10.586 0 180.000 ] color "red")
->>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
