@@ -1,8 +1,0 @@
-prefix=/home/linux/catkin_ws/devel
-
-Name: liu_pkg
-Description: Description of liu_pkg
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

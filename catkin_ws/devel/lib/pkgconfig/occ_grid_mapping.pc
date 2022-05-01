@@ -1,8 +1,0 @@
-prefix=/home/linux/catkin_ws/devel
-
-Name: occ_grid_mapping
-Description: Description of occ_grid_mapping
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
