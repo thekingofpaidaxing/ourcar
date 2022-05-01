@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
+=======
+>>>>>>> 6fb97fc64ffaa9358b5fd4f67af5321c0bd31123
 <launch>
 
   <node pkg="laser_scan_publisher_tutorial" type="laser_scan_publisher" name="sensor_node_name" output="screen">

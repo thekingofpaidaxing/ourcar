@@ -22,6 +22,7 @@ install(TARGETS simple_navigation_goals
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-  
+
 add_executable(loop_goals src/loop_goals.cpp)
 target_link_libraries(loop_goals ${catkin_LIBRARIES})
+
