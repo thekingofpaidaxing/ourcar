@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="laser_scan_publisher_tutorial" type="laser_scan_publisher" name="sensor_node_name" output="screen">
+    <remap from="scan" to="base_scan" />
+  </node>
+
+  <node pkg="odometry_publisher_tutorial" type="odometry_publisher" name="odom_node" output="screen">
+  </node>
+ 
+  <node pkg="robot_setup_tf_tutorial" type="tf_broadcaster" name="transform_configuration_name" output="screen">
+  </node>
+
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim">
+    <remap from="turtle1/cmd_vel" to="cmd_vel" />
+  </node>
+</launch> 
