@@ -26,7 +26,7 @@ source ~/catkin_ws/devel/setup.bash
 ```
 ### load map and robot
 ```
-rosluanch navigation_stage move_base_amcl_2.5cm.launch
+roslaunch navigation_stage move_base_amcl_2.5cm.launch
 ```
 ### make robot start moving
 ```
