@@ -26,3 +26,6 @@ install(TARGETS simple_navigation_goals
 add_executable(loop_goals src/loop_goals.cpp)
 target_link_libraries(loop_goals ${catkin_LIBRARIES})
 
+add_executable(loop_goals_time src/loop_goals_time.cpp)
+target_link_libraries(loop_goals_time ${catkin_LIBRARIES})
+
