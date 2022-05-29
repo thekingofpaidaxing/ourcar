@@ -30,6 +30,6 @@ roslaunch navigation_stage move_base_amcl_2.5cm.launch
 ```
 ### make robot start moving
 ```
-rosrun simple_navigation_goals_tutorial loop_goals
+rosrun simple_navigation_goals_tutorial loop_goals_time
 ```
 
