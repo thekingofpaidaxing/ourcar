@@ -25,7 +25,7 @@ int main(int argc, char** argv){
     // Connect to ROS
     ros::init(argc, argv, "simple_navigation_goals");
   
-    //tell the action client that we want to spin a thread by default
+    // tell the action client that we want to spin a thread by default
     MoveBaseClient ac("move_base", true);
   
     // Wait for the action server to come up so that we can begin processing goals.
@@ -41,6 +41,7 @@ int main(int argc, char** argv){
     boost::shared_ptr<geometry_msgs::PointStamped const> waypoint;
     std::list<boost::shared_ptr<geometry_msgs::PointStamped const>> points_list;
     
+    // 在 visualization_marker 上广播
     ros::NodeHandle n;
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
     
@@ -48,28 +49,31 @@ int main(int argc, char** argv){
     points_marker.header.frame_id = "map";
     points_marker.header.stamp = ros::Time();
     
-    // Set the namespace and id for this marker.  This serves to create a unique ID
-    // Any marker sent with the same namespace and id will overwrite the old one
+    // 设置 Marker 的 namespace 和 id。 
+    // 相同的 namespace 和 id 相同时新 marker 会覆盖旧值
     points_marker.ns = "points";
     points_marker.id =0;
 
+	// 动作：支持添加 ADD/删除 DELETE/删除全部 DELETEALL
     points_marker.action = visualization_msgs::Marker::ADD;
     points_marker.pose.orientation.w = 1.0;
     
     points_marker.type = visualization_msgs::Marker::POINTS;
     
-    // Set the scale of the marker -- 1x1x1 here means 1m on a side
+    // Marker 的比例，这里 1.0 为 1m
     points_marker.scale.x = 1.0;
     points_marker.scale.y = 1.0;
     points_marker.scale.z = 1.0;
     
-    // Points are green
+    // 设置 Marker 颜色（此处为绿色
     points_marker.color.g = 1.0f;
     points_marker.color.a = 1.0;
     
     cout << "\nPlease choose one point on map to start navigation."<<endl;
     
     while(true){
+    	// 监听 /clicked_point topic，获取点坐标，超时时间 5s
+    	// 超时返回值为空
     	waypoint = ros::topic::waitForMessage<geometry_msgs::PointStamped>("/clicked_point", ros::Duration(5.0));   
     		
     	if(waypoint == NULL){
@@ -80,8 +84,10 @@ int main(int argc, char** argv){
    		ROS_INFO("point.x is %f", waypoint->point.x);
    		ROS_INFO("point.y is %f", waypoint->point.y);
 
+		// 将标记点添加到列表中
 		points_list.push_back(waypoint);
     	
+    	// 生成并发布 Marker 在 rviz 中显示
     	geometry_msgs::Point p;
 		p.x = waypoint->point.x;
 		p.y = waypoint->point.y;
@@ -89,7 +95,6 @@ int main(int argc, char** argv){
 
 		points_marker.points.push_back(p);
 	
-		// Publish the marker
 		while (marker_pub.getNumSubscribers() < 1){
       		if (!ros::ok()){
         		return 0;
@@ -101,6 +106,7 @@ int main(int argc, char** argv){
     }
     
     if(points_list.size() != 0){
+    	// 超过一个标记点：设置终点为第一个标记点
     	if(points_list.size() != 1){
     		points_list.push_back(points_list.front());
     	}
@@ -114,6 +120,7 @@ int main(int argc, char** argv){
    			
    			cout << "\nGoing to next point." << endl;
     
+    		// 发送目标使小车开始移动，超时时间 180s
     		ac.sendGoalAndWait(goal, ros::Duration(180.0,0), ros::Duration(180.0,0));
  
     		if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
