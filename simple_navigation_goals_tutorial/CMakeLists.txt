@@ -29,3 +29,5 @@ target_link_libraries(loop_goals ${catkin_LIBRARIES})
 add_executable(loop_goals_time src/loop_goals_time.cpp)
 target_link_libraries(loop_goals_time ${catkin_LIBRARIES})
 
+add_executable(show_marker src/show_marker.cpp)
+target_link_libraries(show_marker ${catkin_LIBRARIES})

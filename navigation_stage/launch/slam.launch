@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock -r 0.5 $(env HOME)/2022-06-16-haiwei.bag"/> 
+     <include file="$(find pointcloud_to_laserscan)/launch/point_to_scan.launch" />
+
+  <include file="$(find hector_slam_launch)/launch/tutorial.launch" />
+
+</launch>
